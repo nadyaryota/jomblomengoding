@@ -10,24 +10,33 @@ class login extends CI_Controller {
 	}
 
 	public function index(){
-		$p = $this->input->post();
-		if(!empty($p['username'])){
-			$res = $this->login_model->login($p);
-			if($res == true){
-				$this->load->view('view_menu');
-			}else{
-				$data['msg'] = 'Username & password salah';
-				$this->load->view('view_login',$data);			
-			} 
+		$ses = $this->session->userdata('username');
+		if(!empty($ses)){
+			redirect(site_url().'/dashboard');
 		}else{
-			$data = array();
-			$this->load->view('view_login',$data);			
+			$p = $this->input->post();
+			if(!empty($p['username'])){
+				$res = $this->login_model->login($p);
+				if($res == true){
+					$sess = array(
+						'username'=>$p['username'],
+					);
+					$this->session->set_userdata($sess);
+					redirect(site_url().'/dashboard');
+				}else{
+					$data['msg'] = 'Username & password salah';
+					$this->load->view('view_login',$data);			
+				} 
+			}else{
+				$data = array();
+				$this->load->view('view_login',$data);			
+			}
 		}		
 	}
 	
 	public function logout(){
-		$this->session->unset_userdata('sdhLogin');		
-		redirect('view_login');
+		$this->session->sess_destroy();		
+		redirect(site_url());
 	}
 	
 	public function tanpa(){
