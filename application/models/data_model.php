@@ -23,6 +23,4 @@ class data_model extends CI_Model {
 		$res = $this->db->insert_batch('pemain',$data_pemain);
 		return $res;
 	}
-
-	
 }

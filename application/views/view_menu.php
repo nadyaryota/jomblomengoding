@@ -114,6 +114,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <li>
                                     <a href="morris.html">Pemain</a>
                                 </li>
+								<li>
+                                    <a href="<?php echo site_url();?>/add_data/statistik">Statistik</a>
+                                </li>
 								
                                 <li>
                                     <a href="notifications.html">Rekap Data</a>
