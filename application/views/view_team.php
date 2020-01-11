@@ -31,7 +31,7 @@
 									echo '<tr>
 										<td>'.$t['id_tim'].'</td>
 										<td>'.$t['nama_tim'].'</td>
-										<td><button type="button" class="btn btn-primary">Lihat</button></td>
+										<td><button type="button" class="btn btn-primary" id="lihat">Lihat</button></td>
 									</tr>';
 								}
 								?>
@@ -47,4 +47,17 @@
 	$(document).ready(function(){
 		$('table#dt_team').DataTable();
 	})
+	$('#lihat').click(function(){
+		$.post('<?php echo site_url()?>/add_data/get_pemaintim',{id:$(this).val()},function(respon){
+			$('button#lihat').find('button').remove();
+			$.each(respon,function(i,v){
+				tambah_pemain(1);
+				$('button#lihat').find('button').find('input[name="pemain"]').val(v.id_pemain);
+				$('button#lihat').find('button').find('input[name="nama_pemain"]').val(v.nama_pemain);
+				$('button#lihat').find('button').find('input[name="no_punggung"]').val(v.no_punggung);
+			})
+		},'json')
+	})
+		
+		
 </script>
