@@ -49,4 +49,15 @@
 	$(document).ready(function(){
 		$('table#dt_team').DataTable();
 	})
+	$('select[name="tim_1"]').change(function(){
+		$.post('<?php echo site_url()?>/add_data/get_pemaintim',{id:$(this).val()},function(respon){
+			$('table#tb_pemain1').find('tbody tr').remove();
+			$.each(respon,function(i,v){
+				tambah_pemain(1);
+				$('table#tb_pemain1').find('tbody tr:last').find('input[name="pemain"]').val(v.id_pemain);
+				$('table#tb_pemain1').find('tbody tr:last').find('input[name="nama_pemain"]').val(v.nama_pemain);
+				$('table#tb_pemain1').find('tbody tr:last').find('input[name="no_punggung"]').val(v.no_punggung);
+			})
+		},'json')
+	})
 </script>
