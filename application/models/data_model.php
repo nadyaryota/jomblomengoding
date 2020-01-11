@@ -23,4 +23,10 @@ class data_model extends CI_Model {
 		$res = $this->db->insert_batch('pemain',$data_pemain);
 		return $res;
 	}
+	public function selectTim(){
+		//Mencri data TIM
+		$sql = "SELECT id_tim,nama_tim FROM tim";
+		return $this->db->query($sql)->result_array();
+	}
+	
 }

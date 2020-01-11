@@ -25,18 +25,16 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Amerika</td>
-									<td><button type="button" class="btn btn-primary">Lihat</button></td>
+								<?php								
+								foreach($tim as $i=>$t){
 									
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Iran</td>
-									<td><button type="button" class="btn btn-primary">Lihat</button></td>
-									
-								</tr>
+									echo '<tr>
+										<td>'.$t['id_tim'].'</td>
+										<td>'.$t['nama_tim'].'</td>
+										<td><button type="button" class="btn btn-primary">Lihat</button></td>
+									</tr>';
+								}
+								?>
 							</tbody>
 						</table>
 					</div>
@@ -48,16 +46,5 @@
 <script>
 	$(document).ready(function(){
 		$('table#dt_team').DataTable();
-	})
-	$('select[name="tim_1"]').change(function(){
-		$.post('<?php echo site_url()?>/add_data/get_pemaintim',{id:$(this).val()},function(respon){
-			$('table#tb_pemain1').find('tbody tr').remove();
-			$.each(respon,function(i,v){
-				tambah_pemain(1);
-				$('table#tb_pemain1').find('tbody tr:last').find('input[name="pemain"]').val(v.id_pemain);
-				$('table#tb_pemain1').find('tbody tr:last').find('input[name="nama_pemain"]').val(v.nama_pemain);
-				$('table#tb_pemain1').find('tbody tr:last').find('input[name="no_punggung"]').val(v.no_punggung);
-			})
-		},'json')
 	})
 </script>

@@ -10,8 +10,9 @@ class add_data extends CI_Controller {
 	}
 	public function index()
 	{
+		$_data['tim'] = $this->data_model->selectTim();
 		$data = array(
-			'content'=>$this->load->view('view_team',array(),true),
+			'content'=>$this->load->view('view_team',$_data,true),
 		);
 		$this->load->view('view_menu',$data);		
 	}
