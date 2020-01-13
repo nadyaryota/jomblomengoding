@@ -48,4 +48,9 @@ class add_data extends CI_Controller {
 		$res = $this->statistik_model->insertStatistik($p);
 		echo true;
 	}
+	public function get_lihatpemain(){
+		$p = $this->input->post('id');
+		$d['pemain'] = $this->statistik_model->selectPemain($p);
+		$this->load->view('view_pemain',$d);
+	}
 }

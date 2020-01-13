@@ -50,13 +50,11 @@
 		$('table#tb_pemain').find('tbody').append('<tr><td><input class="form-control" name="nama_pemain"></td><td><input class="form-control" name="no_punggung"></td></tr>');
 	})
 	$('#simpan').click(function(){
-		data.pemain.push(
-				{
-					'nama_pemain':$(this).find('input[name="nama_pemain"]').val(),
-					'no_punggung':$(this).find('input[name="no_punggung"]').val()
-				}
-			)
+		var data = {
+			'nama_tim' : $('input[name="nama_tim"]').val(),
+			'pemain' : []
 		};
+		
 		$('table#tb_pemain').find('tbody tr').each(function(){
 			data.pemain.push(
 				{
@@ -65,6 +63,7 @@
 				}
 			)
 		})
+		console.log(data);
 		$.post('<?php echo site_url()?>/add_data/simpan',data,function(respon){
 			if(respon>0) window.location = '<?php echo site_url()?>/add_data';
 		})

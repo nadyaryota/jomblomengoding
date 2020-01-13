@@ -31,7 +31,7 @@
 									echo '<tr>
 										<td>'.$t['id_tim'].'</td>
 										<td>'.$t['nama_tim'].'</td>
-										<td><button type="button" class="btn btn-primary" id="lihat">Lihat</button></td>
+										<td><button type="button" class="btn btn-primary lihat-pemain" data-tim="'.$t['id_tim'].'" >Lihat</button></td>
 									</tr>';
 								}
 								?>
@@ -42,22 +42,38 @@
 			</div>
 		</div>
 	</div>
-</div>
+	<div class="modal fade bd-example-modal-lg" id="modalpemain" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Lihat Pemain</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+				
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 <script>
 	$(document).ready(function(){
 		$('table#dt_team').DataTable();
 	})
-	$('#lihat').click(function(){
-		$.post('<?php echo site_url()?>/add_data/get_pemaintim',{id:$(this).val()},function(respon){
-			$('button#lihat').find('button').remove();
-			$.each(respon,function(i,v){
-				tambah_pemain(1);
-				$('button#lihat').find('button').find('input[name="pemain"]').val(v.id_pemain);
-				$('button#lihat').find('button').find('input[name="nama_pemain"]').val(v.nama_pemain);
-				$('button#lihat').find('button').find('input[name="no_punggung"]').val(v.no_punggung);
-			})
-		},'json')
+	$('body').on('click','.lihat-pemain',function(){
+		
+		var id_tim = $(this).attr('data-tim');
+		$.post('<?php echo site_url()?>/add_data/get_lihatpemain',{id:id_tim},function(respon){
+			$('#modalpemain').find('.modal-body').html(respon);
+			$('#modalpemain').modal('show');
+			$('table#dt_pemain').DataTable();
+		})
 	})
+	
 		
 		
 </script>

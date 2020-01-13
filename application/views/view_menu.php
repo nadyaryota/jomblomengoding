@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 	<style>
-		#dt_team_filter,#dt_team_paginate{
+		.dataTables_filter,.dataTables_paginate,#dt_team_filter,#dt_team_paginate{
 			text-align:right;
 		}
 	</style>
@@ -110,9 +110,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="<?php echo site_url(); ?>/add_data">Tim</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Pemain</a>
                                 </li>
 								<li>
                                     <a href="<?php echo site_url();?>/add_data/statistik">Statistik</a>
