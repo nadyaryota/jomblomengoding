@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </li>
 								
                                 <li>
-                                    <a href="notifications.html">Rekap Data</a>
+                                    <a href="<?php echo site_url();?>/add_data/rekap">Rekap Data</a>
                                 </li>
                                
                             </ul>
