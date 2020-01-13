@@ -8,9 +8,12 @@ class rekap_model extends CI_Model {
 		parent::__construct();
 		$this->load->database();
 	}
-	public function getDataPemain(){
-		$sql = "Select id_pemain,nama_pemain from pemain";
+	public function rekapPemain(){
+		$sql = "SELECT
+					no_punggung,nama_tim
+				FROM
+					pemain
+				INNER JOIN tim ON pemain.tim = tim.id_tim";
 		return $this->db->query($sql)->result_array();
 	}
-	
 }

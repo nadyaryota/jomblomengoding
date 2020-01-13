@@ -12,6 +12,7 @@ class rekap extends CI_Controller {
 	}
 	
 	public function count_spk(){
+		$this->load->model('rekap_model');
 		echo '<pre>';
 		$bobot = array(
 			'point = 20',
@@ -21,7 +22,7 @@ class rekap extends CI_Controller {
 			'steal = 15',
 			'block = 15'
 		);	
-		$data = $this->rekap_model->getDataPemain();
+		$data = $this->rekap_model->rekapPemain();
 		print_r($data);
 	}
 	

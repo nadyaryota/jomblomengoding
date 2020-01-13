@@ -7,6 +7,7 @@ class add_data extends CI_Controller {
 		parent::__construct();
 		$this->load->model('data_model');
 		$this->load->model('statistik_model');
+		$this->load->model('rekap_model');
 	}
 	public function index()
 	{
@@ -52,5 +53,13 @@ class add_data extends CI_Controller {
 		$p = $this->input->post('id');
 		$d['pemain'] = $this->statistik_model->selectPemain($p);
 		$this->load->view('view_pemain',$d);
+	}
+
+	public function rekap(){
+		$_data['tim'] = $this->rekap_model->rekapPemain();
+		$data = array(
+			'content'=>$this->load->view('rekap_data',$_data,true),
+		);
+		$this->load->view('view_menu',$data);
 	}
 }
