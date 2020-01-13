@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 11 Jan 2020 pada 11.09
+-- Generation Time: 13 Jan 2020 pada 08.08
 -- Versi Server: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -48,13 +48,13 @@ INSERT INTO `match` (`id`, `id_match`, `tanggal`, `tim`) VALUES
 (8, '5e1893903f', '2020-01-11', 12),
 (9, '5e1893903f', '2020-01-11', 14),
 (10, '5e18950e5f', '2020-01-12', 12),
-(11, '5e18950e5f', '2020-01-12', 13),
 (12, '5e18950ea4', '2020-01-12', 12),
-(13, '5e18950ea4', '2020-01-12', 13),
 (14, '5e18957695', '2020-01-12', 12),
-(15, '5e18957695', '2020-01-12', 13),
 (16, '5e18957705', '2020-01-12', 12),
-(17, '5e18957705', '2020-01-12', 13);
+(18, '5e1c050a3c', '2020-01-13', 15),
+(19, '5e1c050a3c', '2020-01-13', 14),
+(20, '5e1c050b3f', '2020-01-13', 15),
+(21, '5e1c050b3f', '2020-01-13', 14);
 
 -- --------------------------------------------------------
 
@@ -75,12 +75,13 @@ CREATE TABLE `pemain` (
 
 INSERT INTO `pemain` (`id_pemain`, `nama_pemain`, `no_punggung`, `tim`) VALUES
 (19, 'mukidi', 1, 12),
-(20, 'Handyan', 6, 13),
-(21, 'Ihza', 1, 13),
-(22, 'Ramadhan', 97, 13),
 (23, 'Nadya', 17, 14),
 (24, 'Rizky', 7, 14),
-(25, 'Aish', 98, 14);
+(25, 'Aish', 98, 14),
+(26, 'Elsa', 4, 15),
+(27, 'Anna', 5, 15),
+(28, 'Olaf', 7, 15),
+(29, 'Kristoff', 8, 15);
 
 -- --------------------------------------------------------
 
@@ -115,21 +116,23 @@ INSERT INTO `statistik` (`id`, `pemain`, `id_match`, `point`, `assist`, `off_reb
 (8, 24, '9', 4, 3, 4, 5, 5, 10),
 (9, 25, '9', 15, 12, 10, 8, 4, 5),
 (10, 19, '10', 1, 1, 1, 1, 1, 1),
-(11, 20, '11', 2, 2, 2, 2, 2, 2),
-(12, 21, '11', 3, 3, 3, 3, 3, 3),
-(13, 22, '11', 4, 4, 4, 4, 4, 4),
 (14, 19, '12', 1, 1, 1, 1, 1, 1),
-(15, 20, '13', 2, 2, 2, 2, 2, 2),
-(16, 21, '13', 3, 3, 3, 3, 3, 3),
-(17, 22, '13', 4, 4, 4, 4, 4, 4),
 (18, 19, '14', 1, 1, 1, 1, 1, 1),
-(19, 20, '15', 2, 2, 2, 2, 2, 2),
-(20, 21, '15', 3, 3, 3, 3, 3, 3),
-(21, 22, '15', 4, 4, 4, 4, 4, 4),
 (22, 19, '16', 1, 1, 1, 1, 1, 1),
-(23, 20, '17', 2, 2, 2, 2, 2, 2),
-(24, 21, '17', 3, 3, 3, 3, 3, 3),
-(25, 22, '17', 4, 4, 4, 4, 4, 4);
+(26, 26, '18', 10, 10, 10, 10, 10, 10),
+(27, 27, '18', 5, 6, 7, 8, 0, 9),
+(28, 28, '18', 1, 2, 3, 4, 7, 5),
+(29, 29, '18', 1, 2, 3, 4, 6, 5),
+(30, 23, '19', 1, 2, 4, 1, 4, 2),
+(31, 24, '19', 3, 4, 3, 3, 2, 3),
+(32, 25, '19', 3, 1, 2, 3, 4, 3),
+(33, 26, '20', 10, 10, 10, 10, 10, 10),
+(34, 27, '20', 5, 6, 7, 8, 0, 9),
+(35, 28, '20', 1, 2, 3, 4, 7, 5),
+(36, 29, '20', 1, 2, 3, 4, 6, 5),
+(37, 23, '21', 1, 2, 4, 1, 4, 2),
+(38, 24, '21', 3, 4, 3, 3, 2, 3),
+(39, 25, '21', 3, 1, 2, 3, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -149,7 +152,7 @@ CREATE TABLE `tim` (
 INSERT INTO `tim` (`id_tim`, `nama_tim`) VALUES
 (12, 'bambang'),
 (14, 'Bidadari'),
-(13, 'STIKI');
+(15, 'frozen');
 
 -- --------------------------------------------------------
 
@@ -216,22 +219,22 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `match`
 --
 ALTER TABLE `match`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `pemain`
 --
 ALTER TABLE `pemain`
-  MODIFY `id_pemain` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_pemain` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `statistik`
 --
 ALTER TABLE `statistik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `tim`
 --
 ALTER TABLE `tim`
-  MODIFY `id_tim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_tim` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `user`
 --
